@@ -359,7 +359,7 @@
 
             let sum = radkosten + pkw_sum + bahnzuschlag + bahnkosten + andere_oevm + auslagen;
 
-            document.getElementById("bahnkosten").innerHTML = bahnkosten + "&euro;";
+            document.getElementById("bahnkosten").innerHTML = bahnkosten.toFixed(2).replace(".", ",") + "&euro;";
             document.getElementById("oevmkosten").innerHTML = andere_oevm.toFixed(2).replace(".", ",") + "&euro;";
             document.getElementById("bahncardzuschlag").innerHTML = bahnzuschlag.toFixed(2).replace(".", ",") + "&euro;";
             document.getElementById("rad_geld").innerHTML = radkosten.toFixed(2).replace(".", ",") + "&euro;";
@@ -373,7 +373,7 @@
 
         <h4>Fahrkostensätze (ab 2025):</h3>
           <ul>
-            <li>Zug / Andere ÖV:
+            <li>Zug / andere ÖV:
               Wird voll erstattet; mit BahnCard Zuschuss von 10%</li>
             <li>Fahrrad:
               0,3 €/km. Fahrradtickets sowie Parktickets für Fahrräder werden erstattet.</li>
@@ -392,8 +392,8 @@
               </tr>
             </table>
             <p>Die Reisekostenabrechnung muss bis spätestens 4 Wochen nach Schulungsende bei der Geschäftsstelle eingegangen
-              sein. Danach wird eine Gebühr von max. 50,00€ von der Reisekostenabrechnung einbehalten. Nach 8 Wochen
-              wird nichts mehr erstattet. Bitte alle Belege <b>digital</b> dem PDF anhängen / mitschicken (info@jdav-nrw.de).
+              sein. Danach wird eine Gebühr von max. 50 € von der Reisekostenabrechnung einbehalten. Nach 8 Wochen
+              wird nichts mehr erstattet. Bitte alle Belege <b>digital</b> dem PDF anhängen / mitschicken (<a href="mailto:info@jdav-nrw.de">info@jdav-nrw.de</a>).
             </p>
             <p>Ich versichere die Richtigkeit meiner Angaben.</p>
 
