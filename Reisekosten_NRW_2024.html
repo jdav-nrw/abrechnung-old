@@ -306,6 +306,11 @@
           </tr>
 
           <tr>
+            <td colspan="4" align="right"><b>Summe Fahrtkosten</b></td>
+            <td align="right" id="summe_fahrtkosten" class="input_number"><b>0&nbsp;&euro;</b></td>
+          </tr>
+
+          <tr>
             <td colspan="3"><b>Weitere Auslagen:</b> (Auflistung per Mail)<br>
               z.B. Park-/Mautgebühren (bei Veranstaltungsrelevanz),<br>
               Schulungsverpflegung</td>
@@ -314,8 +319,7 @@
           </tr>
 
           <tr>
-            <td colspan="3"></td>
-            <td align="right"><b>Summe</b></td>
+            <td colspan="4" align="right"><b>Summe</b></td>
             <td align="right" id="summe" class="input_number"><b>0&nbsp;&euro;</b></td>
           </tr>
         </table>
@@ -360,7 +364,8 @@
             if (document.getElementById("weiterekosten").value.length == 0) weiterekosten = 0;
             if (isNaN(weiterekosten)) alert("Bitte füge eine Nummer ein!");
 
-            let sum = radkosten + abokosten + pkw_sum + bahnzuschlag + bahnkosten + andere_oevm + weiterekosten;
+            let sum_fahrtkosten = radkosten + abokosten + pkw_sum + bahnzuschlag + bahnkosten + andere_oevm
+            let sum = sum_fahrtkosten + weiterekosten;
 
             document.getElementById("bahnkosten").innerHTML = bahnkosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
             document.getElementById("oevmkosten").innerHTML = andere_oevm.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
@@ -368,6 +373,7 @@
             document.getElementById("abokosten").innerHTML = abokosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
             document.getElementById("radkosten").innerHTML = radkosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
             document.getElementById("weiter_kosten").innerHTML = weiterekosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
+            document.getElementById("summe_fahrtkosten").innerHTML = "<b>" + sum_fahrtkosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;</b>";
             document.getElementById("summe").innerHTML = "<b>" + sum.toFixed(2).replace(".", ",") + "&nbsp;&euro;</b>";
           }
         </script>
@@ -432,6 +438,8 @@
   </page>
   <div id="print_button" class="noprint">
     <button onClick="javascript:self.print()">Seite drucken / PDF erstellen</button>
+    <p style="color: red"><b>Hinweis:</b> Es passt alles auf eine DIN A4 Seite!<br>
+      Dafür bitte in den Druckeinstellungen die Kopf-/Fußzeilen nicht mitdrucken und ggf. die Seitenränder reduzieren bzw. entfernen.</p>
   </div>
 </body>
 
