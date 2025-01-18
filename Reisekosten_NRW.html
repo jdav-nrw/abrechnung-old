@@ -332,7 +332,7 @@
             if (document.getElementById("abo_km").value.length == 0) abo_km = 0;
             if (isNaN(abo_km)) alert("Bitte füge eine Nummer ein!");
             let abo_pauschale = 0.3;
-            let abokosten = Math.min(49, abo_pauschale * abo_km);
+            let abokosten = Math.min(58, abo_pauschale * abo_km);
 
             let rad_km = parseFloat(document.getElementById("rad_km").value.replace(/,/g, "."));
             if (document.getElementById("rad_km").value.length == 0) rad_km = 0;
@@ -372,12 +372,13 @@
 
         <hr />
 
-        <h4>Fahrtkostensätze (ab 2024):</h3>
+        <h4>Fahrtkostensätze (ab 2025):</h3>
+          <p><i>Es gilt die ausführliche Fahrtkostenregelung auf unserer <a href="https://www.jdav-nrw.de/page/ablauf-anmeldung" target="_blank">Webseite</a>.</i></p>
           <ul>
             <li>Zug / andere ÖV:
-              Wird voll erstattet; mit BahnCard zusätzlich 10%</li>
+              Wird voll erstattet inkl. Reservierung; mit BahnCard zusätzlich 10%</li>
             <li>Abo-Ticket:
-              0,3 €/km. Maximal 49 €</li>
+              0,3 €/km. Maximal 58 €</li>
             <li>Fahrrad:
               0,3 €/km. Fahrradtickets sowie Parktickets für Fahrräder werden erstattet.</li>
             <li>PKW/Kleinbus:
@@ -394,8 +395,7 @@
                 <td><input type="text" style="width: 100%;" /></td>
               </tr>
             </table>
-            <p>Bitte alle Belege <b>digital</b> dem PDF anhängen / mitschicken (<a href="mailto:info@jdav-nrw.de">info@jdav-nrw.de</a>).
-            </p>
+            <p><i>Bitte alle Belege <b>digital</b> dem PDF anhängen / mitschicken (<a href="mailto:info@jdav-nrw.de">info@jdav-nrw.de</a>).</i></p>
             <p>Ich versichere die Richtigkeit meiner Angaben.</p>
 
             <table style="width: 90%;">
