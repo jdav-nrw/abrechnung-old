@@ -371,59 +371,62 @@
 
         <hr />
 
-        <h4>Fahrtkostensätze (ab 2025):</h3>
-          <p><i>Es gilt die ausführliche Fahrtkostenregelung auf unserer <a href="https://www.jdav-nrw.de/page/ablauf-anmeldung" target="_blank">Webseite</a>.</i></p>
-          <ul>
-            <li>Zug / andere ÖV:
-              Wird voll erstattet inkl. Reservierung; mit BahnCard zusätzlich 10%</li>
-            <li>Abo-Ticket:
-              0,3 €/km. Maximal 58 €</li>
-            <li>Fahrrad:
-              0,5 €/km. Fahrradtickets sowie Parktickets für Fahrräder werden erstattet.</li>
-            <li>PKW/Kleinbus:
-              0,07 €/km für jede mitfahrende Person</li>
-            <li>Es werden max. 200 € an Fahrtkosten erstattet. Für die Erstattung des Differenzbetrags frag ggf. bei deiner Sektion nach.</li>
-          </ul>
-          <h4>Ich bitte um Überweisung auf:</h3>
-            <table>
-              <tr>
-                <td>IBAN</td>
-                <td><input type="text" style="width: 80%;" /></td>
+        <section class="noprint">
+          <h4>Fahrtkostensätze (ab 2025):</h3>
+            <p><i>Es gilt die ausführliche Fahrtkostenregelung auf unserer <a href="https://www.jdav-nrw.de/page/ablauf-anmeldung" target="_blank">Webseite</a>.</i></p>
+            <ul>
+              <li>Zug / andere ÖV:
+                Wird voll erstattet inkl. Reservierung; mit BahnCard zusätzlich 10%</li>
+              <li>Abo-Ticket:
+                0,3 €/km. Maximal 58 €</li>
+              <li>Fahrrad:
+                0,5 €/km. Fahrradtickets sowie Parktickets für Fahrräder werden erstattet.</li>
+              <li>PKW/Kleinbus:
+                0,07 €/km für jede mitfahrende Person</li>
+              <li>Es werden max. 200 € an Fahrtkosten erstattet. Für die Erstattung des Differenzbetrags frag ggf. bei deiner Sektion nach.</li>
+            </ul>
+            <hr />
+        </section>
 
-                <td>BIC</td>
-                <td><input type="text" style="width: 100%;" /></td>
-              </tr>
-            </table>
-            <p><i>Bitte alle Belege <b>digital</b> dem PDF anhängen / mitschicken (<a href="mailto:info@jdav-nrw.de">info@jdav-nrw.de</a>).</i></p>
-            <p>Ich versichere die Richtigkeit meiner Angaben.</p>
 
-            <table style="width: 90%;">
-              <tr>
-                <td><input type="text" style="width: 70%;"></td>
-                <td id="date"></td>
-                <td>
-                  <hr />
-                </td>
-              </tr>
-              <tr>
-                <td>Ort</td>
-                <td>Datum</td>
-                <td>Unterschrift</td>
-              </tr>
-            </table>
+        <h4>Ich bitte um Überweisung auf:</h3>
+          <br />
+          <table>
+            <tr>
+              <td>IBAN</td>
+              <td><input type="text" style="width: 50%;" /></td>
+            </tr>
+          </table>
+          <p><i>Bitte alle Belege <b>digital</b> dem PDF anhängen / mitschicken (<a href="mailto:info@jdav-nrw.de">info@jdav-nrw.de</a>).</i></p>
+          <p>Ich versichere die Richtigkeit meiner Angaben.</p>
 
-            <!--Funktion, um das heutige Datum auszugeben -->
-            <script>
-              function format(date) {
-                var d = date.getDate();
-                var m = date.getMonth() + 1;
-                var y = date.getFullYear();
-                return "" + (d <= 9 ? "0" + d : d) + "." + (m <= 9 ? "0" + m : m) + "." + y;
-              }
-              var today = new Date();
-              var dateString = format(today);
-              document.getElementById("date").innerHTML = dateString;
-            </script>
+          <table style="width: 90%;">
+            <tr>
+              <td><input type="text" style="width: 70%;"></td>
+              <td id="date"></td>
+              <td>
+                <hr />
+              </td>
+            </tr>
+            <tr>
+              <td>Ort</td>
+              <td>Datum</td>
+              <td>Unterschrift</td>
+            </tr>
+          </table>
+
+          <!--Funktion, um das heutige Datum auszugeben -->
+          <script>
+            function format(date) {
+              var d = date.getDate();
+              var m = date.getMonth() + 1;
+              var y = date.getFullYear();
+              return "" + (d <= 9 ? "0" + d : d) + "." + (m <= 9 ? "0" + m : m) + "." + y;
+            }
+            var today = new Date();
+            var dateString = format(today);
+            document.getElementById("date").innerHTML = dateString;
+          </script>
     </div>
   </page>
   <div id="print_button" class="noprint">
