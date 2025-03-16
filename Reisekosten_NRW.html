@@ -166,35 +166,21 @@
       <h4>Verkehrsmittel:</h4>
       <table>
         <tr>
-          <td>Zug</td>
-          <td>2. Kl., inkl. Fahrradticket</td>
+          <td>Zug/Bus/ÖPNV</td>
+          <td>2. Kl., inkl. Fahrradticket, Reservierung</td>
           <td><input class="input_number" id="bahn" onchange="berechnung()" type="text" />&nbsp;&euro;</td>
           <td align="right" id="bahnkosten">0&nbsp;&euro;</td>
         </tr>
-
         <tr>
-          <td></td>
-          <td>BahnCard genutzt</td>
-          <td>
-            <form>
-              <select id="auswahl_bahncard" style="width: 58px" onchange="berechnung()">
-                <option value="0" selected>nein</option>
-                <option value="0.1">ja</option>
-              </select>
-            </form>
-          </td>
-          <td align="right" id="bahncardzuschlag"></td>
+          <td>Zug/Bus/ÖPNV mit Bahncard</td>
+          <td>2. Kl.</td>
+          <td><input class="input_number" id="bahn_bc" onchange="berechnung()" type="text" />&nbsp;&euro;</td>
+          <td align="right" id="bahnkosten_bc">0&nbsp;&euro;</td>
         </tr>
 
         <tr>
-          <td>Andere ÖV (z.B. Bus)</td>
-          <td></td>
-          <td><input id="andere_oevm" onchange="berechnung()" type="text" class="input_number" />&nbsp;&euro;</td>
-          <td align="right" id="oevmkosten">0&nbsp;&euro;</td>
-        </tr>
-
-        <tr>
-          <td colspan="2">Abo-Ticket (z.B. Deutschlandticket)</td>
+          <td>Abo-Ticket ÖPNV</td>
+          <td>z.B. Deutschlandticket</td>
           <td><input id="abo_km" onchange="berechnung()" type="text" class="input_number" />&nbsp;km</td>
           <td align="right" id="abokosten">0&nbsp;&euro;</td>
         </tr>
@@ -221,7 +207,7 @@
                 <option value="0.63">9 Personen</option>
                 <option value="0.3">veranstaltungsrelevant</option>
                 <option value="0.2">LJL/LJS/Teamer*in (allein)</option>
-                <option value="0.3">LJL/LJS/Teamer*in (+Mitfahrer*innen)</option>
+                <option value="0.3">LJL/LJS/Teamer*in (1-3 Mitfahrende)</option>
               </select>
             </form>
           </td>
@@ -245,7 +231,7 @@
                 <option value="0.63">9 Personen</option>
                 <option value="0.3">veranstaltungsrelevant</option>
                 <option value="0.2">LJL/LJS/Teamer*in (allein)</option>
-                <option value="0.3">LJL/LJS/Teamer*in (+Mitfahrer*innen)</option>
+                <option value="0.3">LJL/LJS/Teamer*in (1-3 Mitfahrende)</option>
               </select>
             </form>
           </td>
@@ -269,7 +255,7 @@
                 <option value="0.63">9 Personen</option>
                 <option value="0.3">veranstaltungsrelevant</option>
                 <option value="0.2">LJL/LJS/Teamer*in (allein)</option>
-                <option value="0.3">LJL/LJS/Teamer*in (+Mitfahrer*innen)</option>
+                <option value="0.3">LJL/LJS/Teamer*in (1-3 Mitfahrende)</option>
               </select>
             </form>
           </td>
@@ -315,12 +301,12 @@
           let bahnkosten = parseFloat(document.getElementById("bahn").value.replace(/,/g, "."));
           if (document.getElementById("bahn").value.length == 0) bahnkosten = 0;
           if (isNaN(bahnkosten)) alert("Bitte füge eine Nummer ein!");
-          let bahncard = document.getElementById("auswahl_bahncard").value;
-          let bahnzuschlag = bahncard * bahnkosten;
 
-          let andere_oevm = parseFloat(document.getElementById("andere_oevm").value.replace(/,/g, "."));
-          if (document.getElementById("andere_oevm").value.length == 0) andere_oevm = 0;
-          if (isNaN(andere_oevm)) alert("Bitte füge eine Nummer ein!");
+          let bahnkosten_bc = parseFloat(document.getElementById("bahn_bc").value.replace(/,/g, "."));
+          if (document.getElementById("bahn_bc").value.length == 0) bahnkosten_bc = 0;
+          if (isNaN(bahnkosten_bc)) alert("Bitte füge eine Nummer ein!");
+          let bahncard_pauschale = 1.1;
+          bahnkosten_bc *= bahncard_pauschale;
 
           let abo_km = parseFloat(document.getElementById("abo_km").value.replace(/,/g, "."));
           if (document.getElementById("abo_km").value.length == 0) abo_km = 0;
@@ -349,18 +335,18 @@
           if (document.getElementById("weiterekosten").value.length == 0) weiterekosten = 0;
           if (isNaN(weiterekosten)) alert("Bitte füge eine Nummer ein!");
 
-          let sum_fahrtkosten = radkosten + abokosten + pkw_sum + bahnzuschlag + bahnkosten + andere_oevm
+          let sum_fahrtkosten = bahnkosten + bahnkosten_bc + abokosten + radkosten + pkw_sum
           let sum = sum_fahrtkosten + weiterekosten;
 
           document.getElementById("bahnkosten").innerHTML = bahnkosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
-          document.getElementById("oevmkosten").innerHTML = andere_oevm.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
-          document.getElementById("bahncardzuschlag").innerHTML = bahnzuschlag.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
+          document.getElementById("bahnkosten_bc").innerHTML = bahnkosten_bc.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
           document.getElementById("abokosten").innerHTML = abokosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
           document.getElementById("radkosten").innerHTML = radkosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
           document.getElementById("weiter_kosten").innerHTML = weiterekosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;";
           document.getElementById("summe_fahrtkosten").innerHTML = "<b>" + sum_fahrtkosten.toFixed(2).replace(".", ",") + "&nbsp;&euro;</b>";
           document.getElementById("summe").innerHTML = "<b>" + sum.toFixed(2).replace(".", ",") + "&nbsp;&euro;</b>";
         }
+        berechnung();
       </script>
       <!--SCRIPT ENDE-->
 
@@ -370,7 +356,7 @@
         <h4>Fahrtkostensätze (ab 2025):</h4>
         <p><i>Es gilt die ausführliche Fahrtkostenregelung auf unserer <a href="https://www.jdav-nrw.de/page/ablauf-anmeldung" target="_blank">Webseite</a>.</i></p>
         <ul>
-          <li>Zug / andere ÖV:
+          <li>Zug/Bus/ÖPNV:
             Wird voll erstattet inkl. Reservierung; mit BahnCard zusätzlich 10%</li>
           <li>Abo-Ticket:
             0,3 €/km. Maximal 58 €</li>
